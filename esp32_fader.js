@@ -69,7 +69,7 @@ document.querySelector('button').addEventListener('click', event => {
 
 function handleNotifications(event) {
   let value = event.target.value;
-  log(value + "\t" + typeof(value));
+  console.log(value + "\t" + typeof(value));
   let a = [];
   // Convert raw data bytes to hex values just for the sake of showing something.
   // In the "real" world, you'd use data.getUint8, data.getUint16 or even
@@ -77,7 +77,7 @@ function handleNotifications(event) {
   for (let i = 0; i < value.byteLength; i++) {
     a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
   }
-  log('> ' + a.join(' '));
+  console.log('> ' + a.join(' '));
   var slider = document.getElementById("myRange");
 	var output = document.getElementById("demo");
 	slider.value = value.getUint8;
