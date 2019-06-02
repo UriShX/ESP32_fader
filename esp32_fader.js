@@ -23,7 +23,6 @@ class ESPfader {
     if (!this.device) {
       return Promise.reject('Device is not connected.');
     }
-    startFaderFreqNotifications;
     return this.device.gatt.connect();
   }
   
@@ -64,7 +63,10 @@ var eSPfader = new ESPfader();
 document.querySelector('button').addEventListener('click', event => {
   eSPfader.request()
   .then(_ => eSPfader.connect())
-  .then(_ => { /* Do something with eSPfader... */})
+  .then(_ => { 
+  /* Do something with eSPfader... */
+  eSPfader.startFaderFreqNotifications();
+  })
   .catch(error => { console.log(error) });
 });
 
