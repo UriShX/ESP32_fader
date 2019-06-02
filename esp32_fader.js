@@ -59,13 +59,22 @@ class ESPfader {
 }
 
 var eSPfader = new ESPfader();
+var slider = document.getElementById("myRange");
+
+slider.onchange = function() {
+	try {
+		eSPfader.writeFaderFreq(this.value);
+	}
+	catch(error) { console.log(error); }
+}
+
 
 document.querySelector('button').addEventListener('click', event => {
   eSPfader.request()
   .then(_ => eSPfader.connect())
   .then(_ => { 
   /* Do something with eSPfader... */
-  eSPfader.startFaderFreqNotifications;
+  //eSPfader.startFaderFreqNotifications;
   })
   .catch(error => { console.log(error) });
 });
