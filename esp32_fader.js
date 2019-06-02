@@ -32,14 +32,14 @@ class ESPfader {
     .then(characteristic => characteristic.writeValue(data));
   }
 
-  startFaderFreqNotifications(listener) {
+  startFaderFreqNotifications(handleNotifications) {
     return this.device.gatt.getPrimaryService("48696828-8aba-4445-b1d2-9fe5c3e47382")
     .then(service => service.getCharacteristic("7dd57463-acc5-48eb-9b7f-3052779322de"))
     .then(characteristic => characteristic.startNotifications())
     .then(characteristic => characteristic.addEventListener('characteristicvaluechanged', handleNotifications));
   }
 
-  stopFaderFreqNotifications(listener) {
+  stopFaderFreqNotifications(handleNotifications) {
     return this.device.gatt.getPrimaryService("48696828-8aba-4445-b1d2-9fe5c3e47382")
     .then(service => service.getCharacteristic("7dd57463-acc5-48eb-9b7f-3052779322de"))
     .then(characteristic => characteristic.stopNotifications())
@@ -64,10 +64,8 @@ var slider = document.getElementById("myRange");
 slider.onchange = function() {
 	try {
 		let value = this.value;
-		let buf = new Uint8Array();
-    buf[0] = value;
-		console.log(value + "\t" + typeof(value) + "\t" + buf);
-		eSPfader.writeFaderFreq(buf);
+		console.log(value + "\t" + typeof(value));
+		eSPfader.writeFaderFreq(new Uint8Array([value]));
 	}
 	catch(error) { console.log(error); }
 }
@@ -95,6 +93,7 @@ function handleNotifications(event) {
   }
   console.log('> ' + a.join(' '));
 
-	slider.value = value.getUint8(0).toString(8);
+	slider.value = value.getUint8(0);
 	output.innerHTML = slider.value;
+  console.log(slider.value + "\t" + typeof(slider.value));
 }
