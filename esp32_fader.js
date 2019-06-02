@@ -4,7 +4,7 @@ class ESPfader {
     this.device = null;
     this.onDisconnected = this.onDisconnected.bind(this);
   }
-  
+
   request() {
     let options = {
       "filters": [{
@@ -18,14 +18,14 @@ class ESPfader {
       this.device.addEventListener('gattserverdisconnected', this.onDisconnected);
     });
   }
-  
+
   connect() {
     if (!this.device) {
       return Promise.reject('Device is not connected.');
     }
     return this.device.gatt.connect();
   }
-  
+
   writeFaderFreq(data) {
     return this.device.gatt.getPrimaryService("48696828-8aba-4445-b1d2-9fe5c3e47382")
     .then(service => service.getCharacteristic("7dd57463-acc5-48eb-9b7f-3052779322de"))
@@ -65,7 +65,7 @@ slider.onchange = function() {
 	try {
 		let encoder = new TextEncoder('utf-8');
 		let value = this.value;
-		let buf = Uint8Array.of(value);
+		let buf = new Uint8Array.of(value);
 		console.log(value + "\t" + typeof(value) + "\t" + buf);
 		eSPfader.writeFaderFreq(buf);
 	}
@@ -76,7 +76,7 @@ slider.onchange = function() {
 document.querySelector('button').addEventListener('click', event => {
   eSPfader.request()
   .then(_ => eSPfader.connect())
-  .then(_ => { 
+  .then(_ => {
   /* Do something with eSPfader... */
   //eSPfader.startFaderFreqNotifications;
   })
@@ -94,8 +94,7 @@ function handleNotifications(event) {
     a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
   }
   console.log('> ' + a.join(' '));
-  var slider = document.getElementById("myRange");
-	var output = document.getElementById("demo");
-	slider.value = value.getUint8;
+
+	slider.value = value.getUint8(0).toString(8);
 	output.innerHTML = slider.value;
 }
