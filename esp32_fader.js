@@ -63,7 +63,9 @@ var slider = document.getElementById("myRange");
 
 slider.onchange = function() {
 	try {
-		eSPfader.writeFaderFreq(this.value);
+		let encoder = new TextEncoder('utf-8');
+		let value = this.value;
+		eSPfader.writeFaderFreq(encoder.encode(value));
 	}
 	catch(error) { console.log(error); }
 }
