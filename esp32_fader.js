@@ -63,11 +63,11 @@ var slider = document.getElementById("myRange");
 
 slider.onchange = function() {
 	try {
-		let encoder = new TextEncoder('utf-8');
 		let value = this.value;
-		let buf;// = new Uint8Array([value]);
+		let buf = new Uint8Array();
+    buf[0] = value;
 		console.log(value + "\t" + typeof(value) + "\t" + buf);
-		eSPfader.writeFaderFreq(new Uint8Array([value]));
+		eSPfader.writeFaderFreq(buf);
 	}
 	catch(error) { console.log(error); }
 }
@@ -78,7 +78,7 @@ document.querySelector('button').addEventListener('click', event => {
   .then(_ => eSPfader.connect())
   .then(_ => {
   /* Do something with eSPfader... */
-  //eSPfader.startFaderFreqNotifications;
+  eSPfader.startFaderFreqNotifications;
   })
   .catch(error => { console.log(error) });
 });
