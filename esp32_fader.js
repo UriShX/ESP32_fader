@@ -32,14 +32,14 @@ class ESPfader {
     .then(characteristic => characteristic.writeValue(data));
   }
 
-  startFaderFreqNotifications(handleNotifications) {
+  startFaderFreqNotifications(listener) {
     return this.device.gatt.getPrimaryService("48696828-8aba-4445-b1d2-9fe5c3e47382")
     .then(service => service.getCharacteristic("7dd57463-acc5-48eb-9b7f-3052779322de"))
     .then(characteristic => characteristic.startNotifications())
     .then(characteristic => characteristic.addEventListener('characteristicvaluechanged', handleNotifications));
   }
 
-  stopFaderFreqNotifications(handleNotifications) {
+  stopFaderFreqNotifications(listener) {
     return this.device.gatt.getPrimaryService("48696828-8aba-4445-b1d2-9fe5c3e47382")
     .then(service => service.getCharacteristic("7dd57463-acc5-48eb-9b7f-3052779322de"))
     .then(characteristic => characteristic.stopNotifications())
