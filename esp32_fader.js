@@ -65,7 +65,9 @@ slider.onchange = function() {
 	try {
 		let encoder = new TextEncoder('utf-8');
 		let value = this.value;
-		eSPfader.writeFaderFreq(encoder.encode(value));
+		let buf = Uint8Array.of(value);
+		console.log(value + "\t" + typeof(value) + "\t" + buf);
+		eSPfader.writeFaderFreq(buf);
 	}
 	catch(error) { console.log(error); }
 }
