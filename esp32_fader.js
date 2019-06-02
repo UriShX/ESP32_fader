@@ -69,6 +69,7 @@ document.querySelector('button').addEventListener('click', event => {
 
 function handleNotifications(event) {
   let value = event.target.value;
+  log(value + "\t" + typeof(value));
   let a = [];
   // Convert raw data bytes to hex values just for the sake of showing something.
   // In the "real" world, you'd use data.getUint8, data.getUint16 or even
