@@ -65,7 +65,7 @@ document.querySelector('button').addEventListener('click', event => {
   .then(_ => eSPfader.connect())
   .then(_ => { 
   /* Do something with eSPfader... */
-  eSPfader.startFaderFreqNotifications();
+  eSPfader.startFaderFreqNotifications;
   })
   .catch(error => { console.log(error) });
 });
