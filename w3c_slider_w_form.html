@@ -6,7 +6,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
-.form-inline {  
+.form-inline {
   display: flex;
   flex-direction: column;
   flex-flow: row wrap;
@@ -39,22 +39,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 
-  
-.slidecontainer {
-  padding: 10vw;
-  //width: 80vw;
-  height: 50vh;
-}
-
 .slider {
   -webkit-appearance: none;
   appearance: none;
-  width: 50vh;
+  width: 100%;
   position: absolute;
   top: 50%;
   //left: 50%;
-  transform: rotate(270deg);
-  -webkit-transform: rotate(270deg) translateX(-15%);// translateY(500%);
+  //transform: rotate(270deg);
+  //-webkit-transform: rotate(270deg) translateX(-15%);// translateY(500%);
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
@@ -62,6 +55,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   transition: opacity .2s;
   data-orientation="vertical";
 }
+
+
+
 
 .slider:hover {
   opacity: 1;
@@ -74,7 +70,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   outline: none;
   opacity: 0.7;
   }
-  
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   writing-mode: bt-lr;
@@ -94,15 +90,45 @@ body {font-family: Arial, Helvetica, sans-serif;}
   cursor: pointer;
 }
 
+.column {
+    float: none;
+    width: 100%
+  }
+
 @media (max-width: 800px) {
   .form-inline input {
   margin: 0 0;
 }
-  
+.slidecontainer {
+  padding: 10vw;
+  //width: 80vw;
+  height: 50vh;
+}
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  //left: 50%;
+  transform: rotate(270deg);
+  -webkit-transform: rotate(270deg) translateX(-15%) translateY(-500%);
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  data-orientation="vertical";
+}
 .form-inline {
   flex-direction: column;
   align-items: stretch;
 }
+
+.column {
+    float: left;
+    width: 50%;
+  }
 }
 </style>
 </head>
@@ -113,8 +139,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <p>Drag the slider to display the current value.</p>
 </div>
 
-<div style="height: 15vh;">
-  <form class="form-inline" id="form1" target="_self">
+<div class="column" style="height: 15vh;">
+  <form class="column form-inline" id="form1" target="_self">
     <label for="min">Min.:</label>
     <input type="number" id="min" value="1" name="Min">
     <label for="max">Max.:</label>
@@ -123,8 +149,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </form>
 </div>
 
-<div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" orient="vertical" id="myRange">
+<div class="slidecontainer column">
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
 </div>
 
 <p>Value: <span id="demo"></span></p>
