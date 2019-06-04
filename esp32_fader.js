@@ -88,7 +88,7 @@ function handleNotifications(event) {
   console.log(event.target.value); /* Characteristic value */
   let value = event.target.value;
   // let peekValue = new DataView(value);
-  for (var i in value.byteLength) {
+  for (let i in value) {
     var uintValue = value.getUint8(i);
     console.log(uintValue + "\n");
   }
