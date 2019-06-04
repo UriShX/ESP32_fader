@@ -86,7 +86,7 @@ function handleNotifications(event) {
   var peekValue = new DataView(value);
   for (var i in peekValue.byteLength) {
     var uintValue = peekValue.getUint8(i);
-    console.console.log(uintValue + "\n");
+    console.log(uintValue + "\n");
   }
   console.log(value + "\t" + typeof(value));
   let a = [];
