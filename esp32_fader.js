@@ -84,10 +84,10 @@ document.querySelector('button').addEventListener('click', event => {
 });
 
 function handleNotifications(event) {
-  console.log(event.target.isRead) /* Returns true if stored value comes from a read operation */
+  console.log(event.target.isRead); /* Returns true if stored value comes from a read operation */
   console.log(event.target.value); /* Characteristic value */
   let value = event.target.value;
-  var peekValue = new DataView(value);
+  let peekValue = new DataView(value);
   for (var i in peekValue.byteLength) {
     var uintValue = peekValue.getUint8(i);
     console.log(uintValue + "\n");
