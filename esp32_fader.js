@@ -37,7 +37,7 @@ class ESPfader {
     .then(service => service.getCharacteristic("7dd57463-acc5-48eb-9b7f-3052779322de"))
     .then(characteristic => characteristic.startNotifications())
     .then(characteristic => characteristic.addEventListener('characteristicvaluechanged', handleNotifications))
-    .then(characteristic => characteristic.addEventListener('characteristicvalueupdated', handleNotifications))
+    // .then(characteristic => characteristic.addEventListener('characteristicvalueupdated', handleNotifications))
     .catch(error => { console.log(error) });
   }
 
