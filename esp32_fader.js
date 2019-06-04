@@ -76,13 +76,18 @@ document.querySelector('button').addEventListener('click', event => {
   .then(_ => eSPfader.connect())
   .then(_ => {
   /* Do something with eSPfader... */
-  eSPfader.startFaderFreqNotifications();
+  eSPfader.startFaderFreqNotifications;
   })
   .catch(error => { console.log(error) });
 });
 
 function handleNotifications(event) {
   let value = event.target.value;
+  var peekValue = new DataView(value);
+  for (var i in peekValue.byteLength) {
+    var uintValue = peekValue.getUint8(i);
+    console.console.log(uintValue + "\n");
+  }
   console.log(value + "\t" + typeof(value));
   let a = [];
   // Convert raw data bytes to hex values just for the sake of showing something.
