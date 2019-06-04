@@ -88,11 +88,11 @@ function handleNotifications(event) {
   console.log(event.target.value); /* Characteristic value */
   let value = event.target.value;
   // let peekValue = new DataView(value);
-  for (let i in value) {
-    var uintValue = value.getUint8(i);
-    console.log(uintValue + "\n");
-  }
-  console.log(value + "\t" + typeof(value));
+  // for (var i in value.byteLength) {
+  //   var uintValue = value.getUint8(i);
+  //   console.log(uintValue + "\n");
+  // }
+  console.log(value + "\t" + typeof(value) + "\t" + value.byteLength + "\t" + value.getUint8());
   let a = [];
   // Convert raw data bytes to hex values just for the sake of showing something.
   // In the "real" world, you'd use data.getUint8, data.getUint16 or even
