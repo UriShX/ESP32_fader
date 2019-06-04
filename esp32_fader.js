@@ -93,7 +93,7 @@ function handleNotifications(event) {
   }
   console.log('> ' + a.join(' '));
 
-	slider.value = new DataView(value);//value.getUint8(0);
+	slider.value = new DataView(value).getUint8(0);//value.getUint8(0);
 	output.innerHTML = slider.value;
   console.log(slider.value + "\t" + typeof(slider.value));
 }
