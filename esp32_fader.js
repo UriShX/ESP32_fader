@@ -36,9 +36,9 @@ class ESPfader {
     return this.device.gatt.getPrimaryService("48696828-8aba-4445-b1d2-9fe5c3e47382")
     .then(service => service.getCharacteristic("7dd57463-acc5-48eb-9b7f-3052779322de"))
     .then(characteristic => characteristic.startNotifications())
-    .then(characteristic => characteristic.addEventListener('characteristicvaluechanged', handleNotifications));
-    // .then(characteristic => characteristic.addEventListener('characteristicvalueupdated', handleNotifications));
-    // .catch(error => { console.log(error) });
+    .then(characteristic => characteristic.addEventListener('characteristicvaluechanged', handleNotifications))
+    .then(characteristic => characteristic.addEventListener('characteristicvalueupdated', handleNotifications))
+    .catch(error => { console.log(error) });
   }
 
   stopFaderFreqNotifications(handleNotifications) {
