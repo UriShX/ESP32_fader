@@ -2,16 +2,25 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div  style="height: 20vh;">
-  <h1>Custom Range Slider</h1>
-  <p>Drag the slider to display the current value.</p>
+<div  style="height: 30%;">
+  <h1>Custom Range Slider W/BLE Write & Notify</h1>
+  <p>
+    Press Bluetooth button to connect to a nearby ESP32 device.
+    Drag the slider to display the current value. When Bluetooth device is connected,
+    auto ranging will take place, and the slider value will be written over BLE to
+    set the ESP32 recieved variable.
+  </p>
+  <div class="connection">
+    <button id="connect_text">Connect <i class="material-icons" id="connection_status">bluetooth</i></button>
+  </div>
 </div>
 
-<div class="column" style="height: 15vh;">
+<div class="column" style="height: 15%;">
   <form class="column form-inline" id="form1" target="_self">
     <label for="min">Min.:</label>
     <input type="number" id="min" value="0" name="Min">

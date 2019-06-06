@@ -6,7 +6,7 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 
-document.getElementById("setButton").onclick = setMinMax();
+document.getElementById("setButton").onclick = setMinMax;
 
 function setMinMax() {
   var boxMin = document.getElementById("min");

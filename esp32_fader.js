@@ -73,12 +73,14 @@ slider.onchange = function() {
 }
 
 
-document.querySelector('button').addEventListener('click', event => {
+document.querySelector('div.connection button').addEventListener('click', event => {
   espFader.request()
   .then(_ => espFader.connect())
   .then(_ => {
   /* Do something with espFader... */
   espFader.startFaderFreqNotifications();
+  // document.getElementById("connect_text").innerHTML = "Connected "; // removes <i> tag, need to swap only text w/Jquery
+  document.getElementById("connection_status").innerHTML = "bluetooth_connected";
   })
   .catch(error => { console.log(error) });
 });
@@ -104,10 +106,10 @@ function handleNotifications(event) {
 
   var _min = document.getElementById("min");
   var _max = document.getElementById("max");
-	slider.value = value.getUint8(0);
   _min.value = value.getUint8(2);
   _max.value = value.getUint8(3);
-  setMinMax();
+  setMinMax;
+  slider.value = value.getUint8(0);
 	output.innerHTML = slider.value;
   console.log(slider.value + "\t" + typeof(slider.value));
 }
