@@ -108,7 +108,7 @@ function handleNotifications(event) {
   var _max = document.getElementById("max");
   _min.value = value.getUint8(2);
   _max.value = value.getUint8(3);
-  setMinMax();
+  setMinMax;
   slider.value = value.getUint8(0);
 	output.innerHTML = slider.value;
   console.log(slider.value + "\t" + typeof(slider.value));
