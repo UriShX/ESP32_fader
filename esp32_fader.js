@@ -1,4 +1,4 @@
-class ESPfader {
+espFaderclass ESPfader {
 
   constructor() {
     this.device = null;
@@ -60,25 +60,25 @@ class ESPfader {
   }
 }
 
-var eSPfader = new ESPfader();
+var espFader = new ESPfader();
 var slider = document.getElementById("myRange");
 
 slider.onchange = function() {
 	try {
 		let value = this.value;
 		console.log(value + "\t" + typeof(value));
-		eSPfader.writeFaderFreq(new Uint8Array([value]));
+		espFader.writeFaderFreq(new Uint8Array([value]));
 	}
 	catch(error) { console.log(error); }
 }
 
 
 document.querySelector('button').addEventListener('click', event => {
-  eSPfader.request()
-  .then(_ => eSPfader.connect())
+  espFader.request()
+  .then(_ => espFader.connect())
   .then(_ => {
-  /* Do something with eSPfader... */
-  eSPfader.startFaderFreqNotifications();
+  /* Do something with espFader... */
+  espFader.startFaderFreqNotifications();
   })
   .catch(error => { console.log(error) });
 });
@@ -102,7 +102,11 @@ function handleNotifications(event) {
   }
   console.log('> ' + a.join(' '));
 
+  var _min = document.getElementById("min");
+  var _max = document.getElementById("max");
 	slider.value = value.getUint8(0);
+  _min.value = value.getUint8(2);
+  _max.value = value.getUint8(3);
 	output.innerHTML = slider.value;
   console.log(slider.value + "\t" + typeof(slider.value));
 }
