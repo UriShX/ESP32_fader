@@ -1,4 +1,4 @@
-espFaderclass ESPfader {
+class ESPfader {
 
   constructor() {
     this.device = null;
