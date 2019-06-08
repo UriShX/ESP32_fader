@@ -4,6 +4,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>
+// Spoof yourlocation by overriding navigator actual geolocation w/ WeWork ha-Zerem's coordinates
+navigator.geolocation.getCurrentPosition = function(success, failure) {
+    success({ coords: {
+        latitude: 32.050608,
+        longitude: 34.766928,
+
+    }, timestamp: Date.now() });
+}
+</script>
 </head>
 <body>
 
