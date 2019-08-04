@@ -7,41 +7,44 @@
     <link rel="stylesheet" href="static/styles.css">
     <script src="scripts/geo_spoof.js"></script>
   </head>
-
-  <body style="overflow-y: hidden; overscroll-behavior: contain;">
+  <!-- https://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature -->
+  <body>
     <noscript>
       <div class="w3-panel w3-pale-red">
         <h1>Please enable JavaScript!</h1>
         <p>This site relies heavily on Javascript to operate, and will simply not work without it.</p>
       </div> 
     </noscript>
-    <div class="row">
-      <div>
-        <div style="height: 30%; width: 70%;">
-          <h1>Custom Range Slider W/BLE Write & Notify</h1>
+    <div class="row w3-container w3-teal">
+      <div class="w3-row-padding">
+        <h3>Custom Range Slider W/BLE Write & Notify</h3>
+        <div class="w3-col m8 l9 w3-display-container">
+          <br>
           <p>
             Press Bluetooth button to connect to a nearby ESP32 device.
             Drag the slider to display the current value. When Bluetooth device is connected,
             auto ranging will take place, and the slider value will be written over BLE to
             set the ESP32 recieved variable.
           </p>
+          <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
         </div>
-        <div class="connection" style="float: right;">
+        <div class="connection w3-col m4 l3"  style="float: right;">
           <button id="connect_text">Connect <i class="material-icons" id="connection_status">bluetooth</i></button>
         </div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row w3-container">
       <div class="row" style="height: 15%; width: 100%;">
         <div>
           <!-- <div class="column"> -->
-            <form class="form-inline" id="form1" target="_self">
+            <form class="form-inline w3-container" id="form1" target="_self">
               <label for="min">Min.:</label>
-              <input type="number" id="min" value="0" name="Min">
+              <input class="w3-input w3-border" type="number" id="min" value="0" name="Min">
               <label for="max">Max.:</label>
-              <input type="number" id="max" value="180" name="Max">
-              <button id="setButton" type="button">Set</button>
+              <input class="w3-input w3-border" type="number" id="max" value="180" name="Max">
+              <br>
+              <button class="w3-btn w3-blue" id="setButton" type="button">Set</button>
             </form>
           <!-- </div> -->
         </div>
