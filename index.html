@@ -1,77 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    // Spoof yourlocation by overriding navigator actual geolocation w/ WeWork ha-Zerem's coordinates
-    navigator.geolocation.getCurrentPosition = function(success, failure) {
-        success({ coords: {
-            latitude: 32.050608,
-            longitude: 34.766928,
-        }, timestamp: Date.now() });
-        failure({ coords: {
-            latitude: 32.050607,
-            longitude: 34.766927,
-        }, timestamp: Date.now() });
-    }
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="scripts/geo_spoof.js"></script>
+  </head>
 
-    navigator.geolocation.watchPosition = function(success, failure) {
-        success({ coords: {
-            latitude: 32.050605,
-            longitude: 34.766925,
-        }, timestamp: Date.now() });
-      	failure({ coords: {
-            latitude: 32.050606,
-            longitude: 34.766926,
-        }, timestamp: Date.now() });
-    }
-  </script>
-</head>
-
-<body>
-
-<div class="row">
-  <div>
-    <div style="height: 30%; width: 70%;">
-      <h1>Custom Range Slider W/BLE Write & Notify</h1>
-      <p>
-        Press Bluetooth button to connect to a nearby ESP32 device.
-        Drag the slider to display the current value. When Bluetooth device is connected,
-        auto ranging will take place, and the slider value will be written over BLE to
-        set the ESP32 recieved variable.
-      </p>
+  <body style="overflow-y: hidden;">
+    <noscript>
+      <div class="w3-panel w3-pale-red">
+        <h1>Please enable JavaScript!</h1>
+        <p>This site relies heavily on Javascript to operate, and will simply not work without it.</p>
+      </div> 
+    </noscript>
+    <div class="row">
+      <div>
+        <div style="height: 30%; width: 70%;">
+          <h1>Custom Range Slider W/BLE Write & Notify</h1>
+          <p>
+            Press Bluetooth button to connect to a nearby ESP32 device.
+            Drag the slider to display the current value. When Bluetooth device is connected,
+            auto ranging will take place, and the slider value will be written over BLE to
+            set the ESP32 recieved variable.
+          </p>
+        </div>
+        <div class="connection" style="float: right;">
+          <button id="connect_text">Connect <i class="material-icons" id="connection_status">bluetooth</i></button>
+        </div>
+      </div>
     </div>
-    <div class="connection" style="float: right;">
-      <button id="connect_text">Connect <i class="material-icons" id="connection_status">bluetooth</i></button>
+
+    <div class="row">
+      <div class="row" style="height: 15%; width: 100%;">
+        <div>
+          <!-- <div class="column"> -->
+            <form class="form-inline" id="form1" target="_self">
+              <label for="min">Min.:</label>
+              <input type="number" id="min" value="0" name="Min">
+              <label for="max">Max.:</label>
+              <input type="number" id="max" value="180" name="Max">
+              <button id="setButton" type="button">Set</button>
+            </form>
+          <!-- </div> -->
+        </div>
+        <p class="inner_col">Value: <span id="demo"></span></p>
+      </div>
+
+      <div class="slidecontainer">
+        <input type="range" min="0" max="180" value="90" class="slider" id="myRange">
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="row" style="height: 15%; width: 100%;">
-    <div>
-      <!-- <div class="column"> -->
-        <form class="form-inline" id="form1" target="_self">
-          <label for="min">Min.:</label>
-          <input type="number" id="min" value="0" name="Min">
-          <label for="max">Max.:</label>
-          <input type="number" id="max" value="180" name="Max">
-          <button id="setButton" type="button">Set</button>
-        </form>
-      <!-- </div> -->
-    </div>
-    <p class="inner_col">Value: <span id="demo"></span></p>
-  </div>
-
-  <div class="slidecontainer">
-    <input type="range" min="0" max="180" value="90" class="slider" id="myRange">
-  </div>
-</div>
-
-<script src="app.js"></script>
-<script src="esp32_fader.js"></script>
-
-</body>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/esp32_fader.js"></script>
+      
+  </body>
 </html>
