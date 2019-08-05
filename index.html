@@ -17,18 +17,33 @@
     </noscript>
     <div class="row w3-container w3-teal">
       <div class="w3-row-padding">
-        <h3>Custom Range Slider W/BLE Write & Notify</h3>
+        <h2>Custom Range Slider W/BLE Write & Notify</h2>
         <div class="w3-col m8 l9 w3-display-container">
           <br>
-          <p>
-            Press Bluetooth button to connect to a nearby ESP32 device.
-            Drag the slider to display the current value. When Bluetooth device is connected,
-            auto ranging will take place, and the slider value will be written over BLE to
-            set the ESP32 recieved variable.
-          </p>
-          <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+          <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green">Description & links</button>
+            <div id="id01" class="w3-modal">
+              <div class="w3-modal-content">
+                <header class="w3-container w3-teal"> 
+                  <span onclick="document.getElementById('id01').style.display='none'" 
+                  class="w3-button w3-display-topright">&times;</span>
+                  <h3>Custom Range Slider W/BLE Write & Notify</h3>
+                </header>
+                <div class="w3-container w3-light-gray">
+                  <p>Press Bluetooth button to connect to a nearby ESP32 device. Drag the slider to display the current value. 
+                    When Bluetooth device is connected, auto ranging will take place, and the slider value will be written over BLE to set the ESP32 recieved variable.</p>
+                  <p>
+                  <a href="https://gist.github.com/UriShX/2b1f1c7b461b466a4b4ae336d52653dd">Arduino sketch of 'breathing' LED controlled by this app</a>
+                  <br>
+                  <a href="https://gist.github.com/UriShX/81266ab108876c4ef4252cc9fd3e1432">Arduino sketch of hobby servo controlled by this app</a>
+                  </p>
+                </div>
+                <footer class="w3-container w3-teal">
+                  <p><a href="https://github.com/UriShX/ESP32_fader">Github repository for this app</a></p>
+                </footer>
+              </div>
+          </div>
         </div>
-        <div class="connection w3-col m4 l3"  style="float: right;">
+        <div class="connection w3-padding-16 w3-col m4 l3"  style="float: right;">
           <button id="connect_text">Connect <i class="material-icons" id="connection_status">bluetooth</i></button>
         </div>
       </div>
